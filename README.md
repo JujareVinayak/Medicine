@@ -17,6 +17,6 @@ Assignment
 <img src="ScreenShots/Medicine_Details_Screen.png" width="300" height="550" hspace=20>
 
  Screenshots Without Internet (Offline Room DB):
-<img src="ScreenShots/Login_Offline_Screen.png" width="300" height="550" hspace=20>
-<img src="ScreenShots/Medicine_List_Offline_Screen.png" width="300" height="550" hspace=20>
-<img src="ScreenShots/Medicine_Details_Offline_Screen.png" width="300" height="550" hspace=20>
+<img src="ScreenShots/Login_Screen_Offline.png" width="300" height="550" hspace=20>
+<img src="ScreenShots/Medicine_List_Screen_Offline.png" width="300" height="550" hspace=20>
+<img src="ScreenShots/Medicine_Details_Screen_Offline.png" width="300" height="550" hspace=20>

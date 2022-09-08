@@ -13,13 +13,7 @@ import com.vinayak.medicine.data.model.items.ProblemItem
 interface ProblemsDAO {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertProblems(problemItems: List<ProblemItem>)
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertProblem(problemItem: ProblemItem): Long
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertMedicines(medicineItems: List<MedicineItem>)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertMedicine(medicineItem: MedicineItem): Long

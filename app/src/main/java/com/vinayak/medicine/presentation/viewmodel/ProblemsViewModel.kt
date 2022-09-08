@@ -22,14 +22,6 @@ class ProblemsViewModel @Inject constructor(private val problemsUseCase: Problem
     private val _problems = MutableLiveData<Problems?>()
     val problems: LiveData<Problems?> get() = _problems
 
-    private val _offlineProblems = MutableLiveData<List<ProblemItem>>()
-    val offlineProblems: LiveData<List<ProblemItem>>
-        get() = _offlineProblems
-
-    private val _offlineMedicines = MutableLiveData<List<MedicineItem>>()
-    val offlineMedicines: LiveData<List<MedicineItem>>
-        get() = _offlineMedicines
-
     fun getProblemsList() {
         viewModelScope.launch {
             problemsUseCase.getProblemsList()?.let {
@@ -40,21 +32,9 @@ class ProblemsViewModel @Inject constructor(private val problemsUseCase: Problem
         }
     }
 
-    suspend fun insertProblems(problemItem: List<ProblemItem>) {
-        viewModelScope.launch {
-            problemsUseCase.insertProblems(problemItem)
-        }
-    }
-
     fun insertProblem(problemItem: ProblemItem) {
         viewModelScope.launch {
             problemsUseCase.insertProblem(problemItem)
-        }
-    }
-
-    suspend fun insertMedicines(medicineItems: List<MedicineItem>) {
-        viewModelScope.launch {
-            problemsUseCase.insertMedicines(medicineItems)
         }
     }
 

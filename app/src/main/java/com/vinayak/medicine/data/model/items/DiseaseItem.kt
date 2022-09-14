@@ -8,9 +8,9 @@ import androidx.room.PrimaryKey
  *
  */
 @Entity(tableName = "problem_data_table")
-data class ProblemItem(
+data class DiseaseItem(
     @PrimaryKey
     @ColumnInfo(name = "problem_id")
     var disease: String,
-    var medicineCount: String
+    var medicineCount: Int
 )

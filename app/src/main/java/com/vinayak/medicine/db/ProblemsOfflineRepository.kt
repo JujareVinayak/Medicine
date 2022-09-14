@@ -1,7 +1,7 @@
 package com.vinayak.medicine.db
 
 import com.vinayak.medicine.data.model.items.MedicineItem
-import com.vinayak.medicine.data.model.items.ProblemItem
+import com.vinayak.medicine.data.model.items.DiseaseItem
 import javax.inject.Inject
 
 class ProblemsOfflineRepository @Inject constructor(private val dao: ProblemsDAO) {
@@ -10,11 +10,11 @@ class ProblemsOfflineRepository @Inject constructor(private val dao: ProblemsDAO
 
     val medicines = dao.getAllMedicines()
 
-    suspend fun insertProblem(problemItem: ProblemItem): Long {
-        return dao.insertProblem(problemItem)
+    suspend fun insertProblem(diseaseItem: DiseaseItem): Long {
+        return dao.insertProblem(diseaseItem)
     }
 
-    suspend fun insertMedicine(medicineItem: MedicineItem): Long {
-        return dao.insertMedicine(medicineItem)
+    suspend fun insertMedicines(medicineItems: List<MedicineItem>) {
+        return dao.insertMedicines(medicineItems)
     }
 }

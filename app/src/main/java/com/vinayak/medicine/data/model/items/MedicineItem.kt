@@ -15,7 +15,7 @@ data class MedicineItem(
     @PrimaryKey
     @ColumnInfo(name = "medicine_id")
     var name: String,
-    var dose: String,
+    var dose: Int,
     var strength: String,
-    var disease: String? = null
+    var disease: String
 ) : Parcelable

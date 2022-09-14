@@ -53,6 +53,8 @@ dependencies {
     implementation "com.nhaarman:mockito-kotlin:1.5.0"
     testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
     testImplementation 'org.mockito:mockito-inline:2.13.0'
+
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.6.10"
     // Room
     implementation "androidx.room:room-runtime:2.4.3"
     kapt "androidx.room:room-compiler:2.4.3"

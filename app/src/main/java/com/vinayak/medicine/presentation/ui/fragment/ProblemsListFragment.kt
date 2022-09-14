@@ -15,8 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.vinayak.medicine.R
+import com.vinayak.medicine.data.model.items.DiseaseItem
 import com.vinayak.medicine.data.model.items.MedicineItem
-import com.vinayak.medicine.data.model.items.ProblemItem
 import com.vinayak.medicine.databinding.FragmentProblemsListBinding
 import com.vinayak.medicine.presentation.ui.adapter.ProblemsAdapter
 import com.vinayak.medicine.presentation.viewmodel.ProblemsViewModel
@@ -33,7 +33,7 @@ class ProblemsListFragment : Fragment(R.layout.fragment_problems_list) {
     private var problemsAdapter: ProblemsAdapter? = null
     private var userName: String? = ""
     val problemsList = mutableListOf<Any>()
-    val problemItems = mutableListOf<ProblemItem>()
+    val problemItems = mutableListOf<DiseaseItem>()
     private var _binding: FragmentProblemsListBinding? = null
 
     // This property is only valid between onCreateView and onDestroyView.
@@ -84,23 +84,17 @@ class ProblemsListFragment : Fragment(R.layout.fragment_problems_list) {
         problemsViewModel.problems.observe(viewLifecycleOwner) {
             problemsList.clear()
             it?.let { problems ->
-                problems.problems.forEach { problem ->
-                    val problemItem = ProblemItem(
-                        problem.disease,
-                        problem.medicines.size.toString()
-                    )
-                    problemsList.add(problemItem)
-                    problemsViewModel.insertProblem(problemItem)
-                    problem.medicines.forEach { medicine ->
-                        val medicineItem = MedicineItem(
-                            medicine.name,
-                            medicine.dose,
-                            medicine.strength,
-                            problem.disease
+                problems.diseases.forEach { diseaseItem ->
+                    problemsList.add(diseaseItem)
+                    problemsViewModel.insertProblem(diseaseItem)
+                    val medicines = problems.medicines.filter { medicineItem ->
+                        medicineItem.disease.equals(
+                            diseaseItem.disease,
+                            true
                         )
-                        problemsList.add(medicineItem)
-                        problemsViewModel.insertMedicine(medicineItem)
                     }
+                    problemsList.addAll(medicines)
+                    problemsViewModel.insertMedicines(medicines)
                 }
             } ?: run {
                 initOfflineData()

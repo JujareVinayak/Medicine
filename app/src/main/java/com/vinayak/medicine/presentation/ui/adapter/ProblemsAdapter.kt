@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vinayak.medicine.R
 import com.vinayak.medicine.data.model.items.MedicineItem
-import com.vinayak.medicine.data.model.items.ProblemItem
+import com.vinayak.medicine.data.model.items.DiseaseItem
 import com.vinayak.medicine.databinding.ViewMedicineItemBinding
 import com.vinayak.medicine.databinding.ViewProblemItemBinding
 
@@ -52,7 +52,7 @@ class ProblemsAdapter(val listener: (medicineItems: MedicineItem) -> Unit) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is ProblemViewHolder -> {
-                holder.bind(list[position] as ProblemItem)
+                holder.bind(list[position] as DiseaseItem)
             }
             is MedicineViewHolder -> {
                 holder.bind(list[position] as MedicineItem)
@@ -61,7 +61,7 @@ class ProblemsAdapter(val listener: (medicineItems: MedicineItem) -> Unit) :
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (list[position] is ProblemItem) {
+        return if (list[position] is DiseaseItem) {
             PROBLEM_VIEW_TYPE
         } else {
             MEDICINE_VIEW_TYPE
@@ -70,10 +70,10 @@ class ProblemsAdapter(val listener: (medicineItems: MedicineItem) -> Unit) :
 
     inner class ProblemViewHolder(private val binding: ViewProblemItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(problemItem: ProblemItem) {
+        fun bind(diseaseItem: DiseaseItem) {
             binding.apply {
-                sectionHeaderText.text = problemItem.disease
-                sectionHeaderCount.text = problemItem.medicineCount
+                sectionHeaderText.text = diseaseItem.disease
+                sectionHeaderCount.text = diseaseItem.medicineCount.toString()
             }
         }
     }

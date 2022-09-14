@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vinayak.medicine.data.model.items.MedicineItem
-import com.vinayak.medicine.data.model.items.ProblemItem
+import com.vinayak.medicine.data.model.items.DiseaseItem
 import com.vinayak.medicine.data.model.response.Problems
 import com.vinayak.medicine.domain.usecase.ProblemsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -32,15 +32,15 @@ class ProblemsViewModel @Inject constructor(private val problemsUseCase: Problem
         }
     }
 
-    fun insertProblem(problemItem: ProblemItem) {
+    fun insertProblem(diseaseItem: DiseaseItem) {
         viewModelScope.launch {
-            problemsUseCase.insertProblem(problemItem)
+            problemsUseCase.insertProblem(diseaseItem)
         }
     }
 
-    fun insertMedicine(medicineItem: MedicineItem) {
+    fun insertMedicines(medicineItems: List<MedicineItem>) {
         viewModelScope.launch {
-            problemsUseCase.insertMedicine(medicineItem)
+            problemsUseCase.insertMedicines(medicineItems)
         }
     }
 

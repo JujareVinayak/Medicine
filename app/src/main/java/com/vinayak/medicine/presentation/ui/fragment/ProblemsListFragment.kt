@@ -32,8 +32,8 @@ class ProblemsListFragment : Fragment(R.layout.fragment_problems_list) {
     private val problemsViewModel by viewModels<ProblemsViewModel>()
     private var problemsAdapter: ProblemsAdapter? = null
     private var userName: String? = ""
-    val problemsList = mutableListOf<Any>()
-    val problemItems = mutableListOf<DiseaseItem>()
+    private val problemsList = mutableListOf<Any>()
+    private val problemItems = mutableListOf<DiseaseItem>()
     private var _binding: FragmentProblemsListBinding? = null
 
     // This property is only valid between onCreateView and onDestroyView.
@@ -67,8 +67,8 @@ class ProblemsListFragment : Fragment(R.layout.fragment_problems_list) {
             greetMessage.text = getGreetMessage(userName)
             problemsList.adapter = problemsAdapter
         }
-        initProblemsObserver()
         if (isInternetConnected()) {
+            initProblemsObserver()
             problemsViewModel.getProblemsList()
         } else {
             initOfflineData()
@@ -108,19 +108,23 @@ class ProblemsListFragment : Fragment(R.layout.fragment_problems_list) {
 
     private fun initOfflineData() {
         problemsViewModel.getOfflineDiseasesList().observe(viewLifecycleOwner) {
+            problemsList.clear()
+            problemItems.clear()
             it?.let {
                 problemItems.addAll(it)
                 problemsViewModel.getOfflineMedicinesList()
             }
         }
         problemsViewModel.getOfflineMedicinesList().observe(viewLifecycleOwner) {
-            problemItems.forEach { problemItem ->
-                problemsList.add(problemItem)
-                it.forEach { medicineItem ->
-                    if (problemItem.disease.equals(medicineItem.disease, true)) {
-                        problemsList.add(medicineItem)
-                    }
+            problemItems.forEach { diseaseItem ->
+                problemsList.add(diseaseItem)
+                val medicineItems = it.filter { medicineItem ->
+                    medicineItem.disease.equals(
+                        diseaseItem.disease,
+                        true
+                    )
                 }
+                problemsList.addAll(medicineItems)
             }
             problemsAdapter?.apply {
                 submitList(problemsList)

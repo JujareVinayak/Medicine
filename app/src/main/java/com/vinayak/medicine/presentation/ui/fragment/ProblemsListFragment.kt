@@ -86,7 +86,7 @@ class ProblemsListFragment : Fragment(R.layout.fragment_problems_list) {
             it?.let { problems ->
                 problems.diseases.forEach { diseaseItem ->
                     problemsList.add(diseaseItem)
-                    problemsViewModel.insertProblem(diseaseItem)
+                    problemsViewModel.insertDisease(diseaseItem)
                     val medicines = problems.medicines.filter { medicineItem ->
                         medicineItem.disease.equals(
                             diseaseItem.disease,
@@ -107,7 +107,7 @@ class ProblemsListFragment : Fragment(R.layout.fragment_problems_list) {
     }
 
     private fun initOfflineData() {
-        problemsViewModel.getOfflineProblemsList().observe(viewLifecycleOwner) {
+        problemsViewModel.getOfflineDiseasesList().observe(viewLifecycleOwner) {
             it?.let {
                 problemItems.addAll(it)
                 problemsViewModel.getOfflineMedicinesList()

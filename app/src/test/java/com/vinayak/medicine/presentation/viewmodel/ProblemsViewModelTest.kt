@@ -30,14 +30,14 @@ class ProblemsViewModelTest : BaseTest() {
 
     @Test
     fun `test getOfflineProblemsList`() {
-        whenever(problemsUseCase.getOfflineProblemsList()).thenReturn(
+        whenever(problemsUseCase.getOfflineDiseasesList()).thenReturn(
             MutableLiveData(
                 listOf(
                     DiseaseItem("Diabetes", 1)
                 )
             )
         )
-        val result = problemsViewModel.getOfflineProblemsList().value
+        val result = problemsViewModel.getOfflineDiseasesList().value
         assertNotNull(result)
         assertEquals(1, result?.size)
         assertEquals("Diabetes", result?.get(0)?.disease)

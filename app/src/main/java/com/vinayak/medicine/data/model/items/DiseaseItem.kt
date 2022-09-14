@@ -5,12 +5,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 /**
- *
+ * Data class to store disease.
  */
-@Entity(tableName = "problem_data_table")
+@Entity(tableName = "disease_data_table")
 data class DiseaseItem(
     @PrimaryKey
-    @ColumnInfo(name = "problem_id")
+    @ColumnInfo(name = "disease_id")
     var disease: String,
     var medicineCount: Int
 )

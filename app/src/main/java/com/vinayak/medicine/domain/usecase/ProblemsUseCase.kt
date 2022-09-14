@@ -15,15 +15,15 @@ class ProblemsUseCase @Inject constructor(
 ) {
     suspend fun getProblemsList() = problemsRepository.getProblemsList()
 
-    suspend fun insertProblem(diseaseItem: DiseaseItem): Long {
-        return problemsOfflineRepository.insertProblem(diseaseItem)
+    suspend fun insertDisease(diseaseItem: DiseaseItem): Long {
+        return problemsOfflineRepository.insertDisease(diseaseItem)
     }
 
     suspend fun insertMedicines(medicineItems: List<MedicineItem>) {
         return problemsOfflineRepository.insertMedicines(medicineItems)
     }
 
-    fun getOfflineProblemsList() = problemsOfflineRepository.problems
+    fun getOfflineDiseasesList() = problemsOfflineRepository.diseases
 
     fun getOfflineMedicinesList() = problemsOfflineRepository.medicines
 

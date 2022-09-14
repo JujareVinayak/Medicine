@@ -32,9 +32,9 @@ class ProblemsViewModel @Inject constructor(private val problemsUseCase: Problem
         }
     }
 
-    fun insertProblem(diseaseItem: DiseaseItem) {
+    fun insertDisease(diseaseItem: DiseaseItem) {
         viewModelScope.launch {
-            problemsUseCase.insertProblem(diseaseItem)
+            problemsUseCase.insertDisease(diseaseItem)
         }
     }
 
@@ -44,7 +44,7 @@ class ProblemsViewModel @Inject constructor(private val problemsUseCase: Problem
         }
     }
 
-    fun getOfflineProblemsList() = problemsUseCase.getOfflineProblemsList()
+    fun getOfflineDiseasesList() = problemsUseCase.getOfflineDiseasesList()
 
     fun getOfflineMedicinesList() = problemsUseCase.getOfflineMedicinesList()
 }

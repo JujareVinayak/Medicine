@@ -28,5 +28,4 @@ open class BaseTest {
         openMocks(this)
     }
 
-    fun <T> any(): T = Mockito.any<T>()
 }

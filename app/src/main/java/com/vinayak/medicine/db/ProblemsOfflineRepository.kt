@@ -6,12 +6,12 @@ import javax.inject.Inject
 
 class ProblemsOfflineRepository @Inject constructor(private val dao: ProblemsDAO) {
 
-    val problems = dao.getAllProblems()
+    val diseases = dao.getAllDiseases()
 
     val medicines = dao.getAllMedicines()
 
-    suspend fun insertProblem(diseaseItem: DiseaseItem): Long {
-        return dao.insertProblem(diseaseItem)
+    suspend fun insertDisease(diseaseItem: DiseaseItem): Long {
+        return dao.insertDisease(diseaseItem)
     }
 
     suspend fun insertMedicines(medicineItems: List<MedicineItem>) {

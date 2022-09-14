@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 /**
- *
+ * Data class to store medicine
  */
 @Entity(tableName = "medicine_data_table")
 @Parcelize

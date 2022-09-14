@@ -13,13 +13,13 @@ import com.vinayak.medicine.data.model.items.DiseaseItem
 interface ProblemsDAO {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertProblem(diseaseItem: DiseaseItem): Long
+    suspend fun insertDisease(diseaseItem: DiseaseItem): Long
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertMedicines(medicineItems: List<MedicineItem>)
 
-    @Query("SELECT * FROM problem_data_table")
-    fun getAllProblems(): LiveData<List<DiseaseItem>>
+    @Query("SELECT * FROM disease_data_table")
+    fun getAllDiseases(): LiveData<List<DiseaseItem>>
 
     @Query("SELECT * FROM medicine_data_table")
     fun getAllMedicines(): LiveData<List<MedicineItem>>
